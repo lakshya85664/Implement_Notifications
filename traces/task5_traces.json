@@ -1,0 +1,74 @@
+[
+    {
+        "scenario": "success",
+        "run_id": "RUN-OP-SUCCESS",
+        "event": "start",
+        "attempt": null,
+        "status": null,
+        "error_type": null,
+        "idempotency_key": null
+    },
+    {
+        "scenario": "success",
+        "run_id": "RUN-OP-SUCCESS",
+        "event": "notification.delivered",
+        "attempt": null,
+        "status": null,
+        "error_type": null,
+        "idempotency_key": null
+    },
+    {
+        "scenario": "failure",
+        "run_id": null,
+        "event": null,
+        "attempt": 1,
+        "status": "failed",
+        "error_type": "permanent_failure",
+        "idempotency_key": "RUN-OP-FAIL|ORDER-5002"
+    },
+    {
+        "scenario": "replay",
+        "run_id": "RUN-OP-REPLAY",
+        "event": "start",
+        "attempt": null,
+        "status": null,
+        "error_type": null,
+        "idempotency_key": null
+    },
+    {
+        "scenario": "replay",
+        "run_id": "RUN-OP-REPLAY",
+        "event": "notification.delivered",
+        "attempt": null,
+        "status": null,
+        "error_type": null,
+        "idempotency_key": null
+    },
+    {
+        "scenario": "replay",
+        "run_id": "RUN-OP-REPLAY",
+        "event": "notification.duplicate_skipped",
+        "attempt": null,
+        "status": null,
+        "error_type": null,
+        "idempotency_key": null
+    },
+    {
+        "scenario": "recovery",
+        "run_id": null,
+        "event": null,
+        "attempt": 1,
+        "status": "failed",
+        "error_type": "timeout",
+        "idempotency_key": "RUN-OP-RECOVERY|ORDER-5004"
+    },
+    {
+        "scenario": "recovery",
+        "run_id": null,
+        "event": null,
+        "attempt": 2,
+        "status": "success",
+        "error_type": null,
+        "idempotency_key": "RUN-OP-RECOVERY|ORDER-5004"
+    }
+]

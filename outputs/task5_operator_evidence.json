@@ -1,0 +1,136 @@
+{
+    "summary": {
+        "topic": "Topic 12 - Implement Notifications",
+        "overall_status": "completed",
+        "scenarios_executed": 4,
+        "successful_scenarios": 4,
+        "actual_deliveries": 2,
+        "duplicate_deliveries_prevented": 1,
+        "recovery_attempts": 2,
+        "failure_attempts": 1
+    },
+    "scenarios": {
+        "success": {
+            "scenario": "success",
+            "status": "delivered",
+            "next_action": "continue_workflow",
+            "delivery_count": 1,
+            "result": {
+                "success": true,
+                "recipient": "customer@example.com",
+                "notification_type": "order_completed",
+                "message_id": "MSG-1",
+                "error": null,
+                "attempts": 1
+            },
+            "traces": [
+                {
+                    "run_id": "RUN-OP-SUCCESS",
+                    "event": "start",
+                    "state": "running",
+                    "timestamp": "2026-11-19T12:03:33.419724+00:00",
+                    "details": {
+                        "previous_state": "created",
+                        "next_state": "running"
+                    }
+                },
+                {
+                    "run_id": "RUN-OP-SUCCESS",
+                    "event": "notification.delivered",
+                    "state": "running",
+                    "timestamp": "2026-11-19T12:03:33.419825+00:00",
+                    "details": {
+                        "recipient": "customer@example.com",
+                        "message_id": "MSG-1",
+                        "business_key": "ORDER-5001"
+                    }
+                }
+            ]
+        },
+        "failure": {
+            "scenario": "failure",
+            "status": "failed",
+            "error_type": "permanent_failure",
+            "attempts": 1,
+            "next_action": "quarantine_and_review",
+            "traces": [
+                {
+                    "attempt": 1,
+                    "status": "failed",
+                    "error_type": "permanent_failure",
+                    "error": "Recipient permanently rejected",
+                    "retryable": false,
+                    "idempotency_key": "RUN-OP-FAIL|ORDER-5002"
+                }
+            ]
+        },
+        "replay": {
+            "scenario": "replay",
+            "status": "duplicate_skipped",
+            "first_delivery_success": true,
+            "second_delivery_success": true,
+            "actual_delivery_count": 1,
+            "next_action": "continue_without_resending",
+            "traces": [
+                {
+                    "run_id": "RUN-OP-REPLAY",
+                    "event": "start",
+                    "state": "running",
+                    "timestamp": "2026-11-19T12:03:33.419873+00:00",
+                    "details": {
+                        "previous_state": "created",
+                        "next_state": "running"
+                    }
+                },
+                {
+                    "run_id": "RUN-OP-REPLAY",
+                    "event": "notification.delivered",
+                    "state": "running",
+                    "timestamp": "2026-11-19T12:03:33.419902+00:00",
+                    "details": {
+                        "recipient": "customer@example.com",
+                        "message_id": "MSG-1",
+                        "business_key": "ORDER-5003"
+                    }
+                },
+                {
+                    "run_id": "RUN-OP-REPLAY",
+                    "event": "notification.duplicate_skipped",
+                    "state": "running",
+                    "timestamp": "2026-11-19T12:03:33.419914+00:00",
+                    "details": {
+                        "business_key": "ORDER-5003",
+                        "recipient": "customer@example.com"
+                    }
+                }
+            ]
+        },
+        "recovery": {
+            "scenario": "recovery",
+            "status": "recovered",
+            "attempts": 2,
+            "response": {
+                "message_id": "MSG-RECOVERED-5004",
+                "status": "delivered"
+            },
+            "next_action": "continue_workflow",
+            "traces": [
+                {
+                    "attempt": 1,
+                    "status": "failed",
+                    "error_type": "timeout",
+                    "error": "Temporary gateway timeout",
+                    "retryable": true,
+                    "idempotency_key": "RUN-OP-RECOVERY|ORDER-5004",
+                    "next_retry_in_seconds": 1
+                },
+                {
+                    "attempt": 2,
+                    "status": "success",
+                    "error_type": null,
+                    "idempotency_key": "RUN-OP-RECOVERY|ORDER-5004"
+                }
+            ]
+        }
+    }
+}

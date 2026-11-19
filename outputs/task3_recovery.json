@@ -1,0 +1,26 @@
+{
+    "status": "recovered",
+    "response": {
+        "message_id": "MSG-RECOVERY-1",
+        "status": "delivered"
+    },
+    "attempts": 2,
+    "next_action": "continue_workflow",
+    "trace": [
+        {
+            "attempt": 1,
+            "status": "failed",
+            "error_type": "timeout",
+            "error": "Temporary gateway timeout",
+            "retryable": true,
+            "idempotency_key": "RUN-RECOVERY-1|ORDER-3001",
+            "next_retry_in_seconds": 1
+        },
+        {
+            "attempt": 2,
+            "status": "success",
+            "error_type": null,
+            "idempotency_key": "RUN-RECOVERY-1|ORDER-3001"
+        }
+    ]
+}

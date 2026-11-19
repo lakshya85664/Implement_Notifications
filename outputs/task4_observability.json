@@ -1,0 +1,58 @@
+{
+    "run_id": "RUN-OBS-001",
+    "response": {
+        "recipient": "customer@example.com",
+        "subject": "Order completed",
+        "body": "Your order is completed.",
+        "idempotency_key": "RUN-OBS-001|ORDER-4001",
+        "message_id": "MSG-1",
+        "status": "delivered"
+    },
+    "status": {
+        "component": "notification_delivery",
+        "status": "healthy",
+        "metrics": {
+            "total_attempts": 1,
+            "successful_deliveries": 1,
+            "failed_deliveries": 0,
+            "timeout_count": 0,
+            "average_latency_ms": 1.155,
+            "success_rate": 1.0
+        },
+        "trace_count": 1,
+        "recent_traces": [
+            {
+                "event": "adapter.delivery_succeeded",
+                "recipient": "customer@example.com",
+                "idempotency_key": "RUN-OBS-001|ORDER-4001",
+                "latency_ms": 1.155,
+                "status": "success"
+            }
+        ]
+    },
+    "traces": [
+        {
+            "event": "adapter.delivery_succeeded",
+            "recipient": "customer@example.com",
+            "idempotency_key": "RUN-OBS-001|ORDER-4001",
+            "latency_ms": 1.155,
+            "status": "success"
+        }
+    ],
+    "metrics": {
+        "total_attempts": 1,
+        "successful_deliveries": 1,
+        "failed_deliveries": 0,
+        "timeout_count": 0,
+        "average_latency_ms": 1.155,
+        "success_rate": 1.0
+    },
+    "redaction_example": {
+        "event": "configuration.checked",
+        "api_key": "[REDACTED]",
+        "details": {
+            "access_token": "[REDACTED]",
+            "mode": "test"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "total_attempts": 1,
+    "successful_deliveries": 1,
+    "failed_deliveries": 0,
+    "timeout_count": 0,
+    "average_latency_ms": 1.155,
+    "success_rate": 1.0
+}

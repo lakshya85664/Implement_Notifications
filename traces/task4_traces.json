@@ -1,0 +1,9 @@
+[
+    {
+        "event": "adapter.delivery_succeeded",
+        "recipient": "customer@example.com",
+        "idempotency_key": "RUN-OBS-001|ORDER-4001",
+        "latency_ms": 1.155,
+        "status": "success"
+    }
+]

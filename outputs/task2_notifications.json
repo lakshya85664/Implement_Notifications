@@ -1,0 +1,45 @@
+{
+    "run_id": "RUN-NOTIFY-001",
+    "workflow_state": "running",
+    "delivery_result": {
+        "success": true,
+        "recipient": "customer@example.com",
+        "notification_type": "order_delayed",
+        "message_id": "MSG-1",
+        "error": null,
+        "attempts": 1
+    },
+    "messages": [
+        {
+            "recipient": "customer@example.com",
+            "subject": "Your order has been delayed",
+            "body": "Hello Alex, your order ORDER-1001 has been delayed. Reason: Weather conditions.",
+            "idempotency_key": "RUN-NOTIFY-001|ORDER-1001|order_delayed|customer@example.com",
+            "message_id": "MSG-1",
+            "status": "delivered"
+        }
+    ],
+    "events": [
+        {
+            "run_id": "RUN-NOTIFY-001",
+            "event": "start",
+            "state": "running",
+            "timestamp": "2026-11-19T12:02:01.160696+00:00",
+            "details": {
+                "previous_state": "created",
+                "next_state": "running"
+            }
+        },
+        {
+            "run_id": "RUN-NOTIFY-001",
+            "event": "notification.delivered",
+            "state": "running",
+            "timestamp": "2026-11-19T12:02:01.160827+00:00",
+            "details": {
+                "recipient": "customer@example.com",
+                "message_id": "MSG-1",
+                "business_key": "ORDER-1001"
+            }
+        }
+    ]
+}
